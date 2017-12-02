@@ -1,0 +1,1 @@
+@"c:\users\brandon\documents\workspace\oc6-rostermaker\oc6-venv\scripts\python.exe" "c:\users\brandon\documents\workspace\oc6-rostermaker\oc6-venv\Scripts\markdown_py" %*
