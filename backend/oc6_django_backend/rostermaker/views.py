@@ -12,7 +12,7 @@ class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
 
 class PaddlerViewSet(viewsets.ModelViewSet):
-    queryset = Paddler.objects.all()
+    queryset = Paddler.objects.all().order_by('id')
     serializer_class = PaddlerSerializer
 
 class GroupViewSet(viewsets.ModelViewSet):
