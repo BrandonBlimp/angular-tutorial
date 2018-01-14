@@ -14,7 +14,10 @@ class Paddler(models.Model):
     # note: id not required as it's automatically inserted by Django
     name = models.CharField(unique=True, max_length=40)
     paddling_side = models.CharField(choices=PADDLING_SIDES, blank=False, default=PADDLING_SIDE_BOTH, max_length=10)
-    time = models.DateTimeField(default=datetime.time(0))
+    # TODO-Brandon: storing in milliseconds for now to make serialization a bit easier
+    # Time in milliseconds
+    time = models.IntegerField(default=0)
+    # time = models.DateTimeField(default=datetime.time(0))
 
     class Meta:
         ordering = (['time'])

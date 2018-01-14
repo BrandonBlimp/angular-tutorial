@@ -18,9 +18,11 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
 
 # TODO-Brandon: apparently this can be cleaned by using a ModelSerializer class
 class PaddlerSerializer(serializers.Serializer):
+    id = serializers.IntegerField(read_only=True)
     name = serializers.CharField(max_length=40)
     paddling_side = serializers.ChoiceField(choices=Paddler.PADDLING_SIDES, default=Paddler.PADDLING_SIDE_BOTH)
-    time = serializers.DateTimeField(default=datetime.time(0))
+    time = serializers.IntegerField(default=0)
+    # time = serializers.DateTimeField(default=datetime.time(0))
 
     def create(self, validated_data):
         """

@@ -34,6 +34,7 @@ class UserViewSet(viewsets.ModelViewSet):
 router = routers.DefaultRouter()
 router.register(r'users', UserViewSet)
 router.register(r'groups', views.GroupViewSet)
+router.register(r'paddlers', views.PaddlerViewSet)
 
 urlpatterns = [
     url(r'^', include(router.urls)),

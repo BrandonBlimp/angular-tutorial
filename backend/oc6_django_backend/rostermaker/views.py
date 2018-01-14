@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
-from rostermaker.serializers import UserSerializer, GroupSerializer
+from rostermaker.models import Paddler
+from rostermaker.serializers import UserSerializer, GroupSerializer, PaddlerSerializer
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -10,6 +11,9 @@ class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all().order_by('-date_joined')
     serializer_class = UserSerializer
 
+class PaddlerViewSet(viewsets.ModelViewSet):
+    queryset = Paddler.objects.all()
+    serializer_class = PaddlerSerializer
 
 class GroupViewSet(viewsets.ModelViewSet):
     """
