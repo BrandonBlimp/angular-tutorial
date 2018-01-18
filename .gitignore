@@ -2,3 +2,5 @@ node_modules/
 oc6-env/
 
 .vscode/
+backend/django-docs-1.11-en/
+backend/oc6_django_backend/rostermaker/__pycache__/
