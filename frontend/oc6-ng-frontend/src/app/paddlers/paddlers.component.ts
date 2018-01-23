@@ -1,23 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { Paddler } from '../paddler';
 
+import { PADDLERS } from '../mock-paddlers';
+
 @Component({
   selector: 'app-paddlers',
   templateUrl: './paddlers.component.html',
   styleUrls: ['./paddlers.component.css']
 })
 export class PaddlersComponent implements OnInit {
-
-  paddler: Paddler = {
-    id: 1,
-    name: 'Alex',
-    paddlingSide: 'Both',
-    time: 10
-  }
+  
+  paddlers = PADDLERS;
+  selectedPaddler: Paddler;
 
   constructor() { }
-
+  
   ngOnInit() {
+  }
+  
+  onSelect(paddler: Paddler): void {
+    this.selectedPaddler = paddler;
   }
 
 }

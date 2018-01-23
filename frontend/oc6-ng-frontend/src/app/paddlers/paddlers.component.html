@@ -1,28 +1,35 @@
-<h2>{{ paddler.name | uppercase }}'s Details</h2>
+<h2>All Paddlers</h2>
 
-<!-- <div><span>Name: </span>{{paddler.name}}</div>
-<div><span>ID: </span>{{paddler.id}}</div>
-<div><span>Paddling side: </span>{{paddler.paddlingSide}}</div>
-<div><span>Time in milliseconds: </span>{{paddler.time}}</div> -->
+<ul class="paddler">
+  <li *ngFor="let paddler of paddlers" 
+    [class.selected]="paddler === selectedPaddler" 
+    (click)="onSelect(paddler)">
+    <span class="badge">{{paddler.id}}</span> {{paddler.name}}
+  </li>
+</ul>
 
-<div>
-  <label>Name:
-    <input [(ngModel)]="paddler.name" placeholder="name">
-  </label>
-</div>
+<div *ngIf="selectedPaddler">
+  <h2>{{ selectedPaddler.name }}'s Details</h2>
 
-<div>
-  <span>ID: </span> {{paddler.id}}
-</div>
-
-<div>
-  <label>Paddling side:
-    <input [(ngModel)]="paddler.paddlingSide" placeholder="both">
-  </label>
-</div>
-
-<div>
-  <label>Time in milliseconds:
-    <input [(ngModel)]="paddler.time">
-  </label>
+  <div>
+    <label>Name:
+      <input [(ngModel)]="selectedPaddler.name" placeholder="name">
+    </label>
+  </div>
+  
+  <div>
+    <span>ID: </span> {{selectedPaddler.id}}
+  </div>
+  
+  <div>
+    <label>Paddling side:
+      <input [(ngModel)]="selectedPaddler.paddlingSide" placeholder="both">
+    </label>
+  </div>
+  
+  <div>
+    <label>Time in milliseconds:
+      <input [(ngModel)]="selectedPaddler.time">
+    </label>
+  </div>
 </div>
