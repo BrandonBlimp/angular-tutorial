@@ -1,0 +1,28 @@
+<h2>{{ paddler.name | uppercase }}'s Details</h2>
+
+<!-- <div><span>Name: </span>{{paddler.name}}</div>
+<div><span>ID: </span>{{paddler.id}}</div>
+<div><span>Paddling side: </span>{{paddler.paddlingSide}}</div>
+<div><span>Time in milliseconds: </span>{{paddler.time}}</div> -->
+
+<div>
+  <label>Name:
+    <input [(ngModel)]="paddler.name" placeholder="name">
+  </label>
+</div>
+
+<div>
+  <span>ID: </span> {{paddler.id}}
+</div>
+
+<div>
+  <label>Paddling side:
+    <input [(ngModel)]="paddler.paddlingSide" placeholder="both">
+  </label>
+</div>
+
+<div>
+  <label>Time in milliseconds:
+    <input [(ngModel)]="paddler.time">
+  </label>
+</div>
