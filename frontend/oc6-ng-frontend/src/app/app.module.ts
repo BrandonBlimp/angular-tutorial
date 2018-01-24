@@ -4,8 +4,9 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
-import { PaddlersComponent } from './paddlers/paddlers.component';
 import { PaddlerDetailComponent } from './paddler-detail/paddler-detail.component';
+import { PaddlerService } from './paddler.service';
+import { PaddlersComponent } from './paddlers/paddlers.component';
 
 
 @NgModule({
@@ -18,7 +19,7 @@ import { PaddlerDetailComponent } from './paddler-detail/paddler-detail.componen
     BrowserModule,
     FormsModule
   ],
-  providers: [],
+  providers: [ PaddlerService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
