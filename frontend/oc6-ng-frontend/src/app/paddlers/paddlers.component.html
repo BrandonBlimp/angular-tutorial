@@ -8,28 +8,4 @@
   </li>
 </ul>
 
-<div *ngIf="selectedPaddler">
-  <h2>{{ selectedPaddler.name }}'s Details</h2>
-
-  <div>
-    <label>Name:
-      <input [(ngModel)]="selectedPaddler.name" placeholder="name">
-    </label>
-  </div>
-  
-  <div>
-    <span>ID: </span> {{selectedPaddler.id}}
-  </div>
-  
-  <div>
-    <label>Paddling side:
-      <input [(ngModel)]="selectedPaddler.paddlingSide" placeholder="both">
-    </label>
-  </div>
-  
-  <div>
-    <label>Time in milliseconds:
-      <input [(ngModel)]="selectedPaddler.time">
-    </label>
-  </div>
-</div>
+<app-paddler-detail [paddler]="selectedPaddler"></app-paddler-detail>
