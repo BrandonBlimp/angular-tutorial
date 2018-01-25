@@ -11,6 +11,7 @@ export class PaddlersComponent implements OnInit {
   
   paddlers: Paddler[];
   selectedPaddler: Paddler;
+  selectedPaddlers: Paddler[] = [];
 
   constructor(private paddlerService: PaddlerService) { }
   
@@ -18,8 +19,21 @@ export class PaddlersComponent implements OnInit {
     this.getPaddlers();
   }
   
-  onSelect(paddler: Paddler): void {
+  onMouseEnter(paddler: Paddler): void {
     this.selectedPaddler = paddler;
+  }
+
+  onSelect(paddler: Paddler): void {
+    // TODO: check paddler id, not the entire object
+    var index: number = this.selectedPaddlers.indexOf(paddler);
+
+    if (index >= 0) {
+      this.selectedPaddlers.splice(index, 1)
+    }
+    else {
+      this.selectedPaddlers.push(paddler);
+    }
+    console.log(this.selectedPaddlers);
   }
 
   getPaddlers(): void {

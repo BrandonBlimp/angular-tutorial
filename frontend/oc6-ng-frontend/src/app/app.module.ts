@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { PaddlerDetailComponent } from './paddler-detail/paddler-detail.component';
 import { PaddlerService } from './paddler.service';
 import { PaddlersComponent } from './paddlers/paddlers.component';
+import { BoatsComponent } from './boats/boats.component';
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import { PaddlersComponent } from './paddlers/paddlers.component';
     AppComponent,
     PaddlersComponent,
     PaddlerDetailComponent,
+    BoatsComponent,
   ],
   imports: [
     BrowserModule,

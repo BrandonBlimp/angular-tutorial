@@ -5,6 +5,7 @@
     <ul class="paddler">
       <li *ngFor="let paddler of paddlers" 
         [class.selected]="paddler === selectedPaddler" 
+        (mouseenter)="onMouseEnter(paddler)"
         (click)="onSelect(paddler)">
         <span class="badge">{{paddler.id}}</span> {{paddler.name}}
       </li>
@@ -13,5 +14,9 @@
   
   <div class="details">
     <app-paddler-detail [paddler]="selectedPaddler" class="details"></app-paddler-detail>
+  </div>
+
+  <div class="boats">
+    <app-boats [paddlers]="selectedPaddlers" class="boats"></app-boats>
   </div>
 </div>
