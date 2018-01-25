@@ -1,11 +1,17 @@
-<h2>All Paddlers</h2>
 
-<ul class="paddler">
-  <li *ngFor="let paddler of paddlers" 
-    [class.selected]="paddler === selectedPaddler" 
-    (click)="onSelect(paddler)">
-    <span class="badge">{{paddler.id}}</span> {{paddler.name}}
-  </li>
-</ul>
-
-<app-paddler-detail [paddler]="selectedPaddler"></app-paddler-detail>
+<div class="container">
+  <h2>All Paddlers</h2>
+  <div class="paddlerList">
+    <ul class="paddler">
+      <li *ngFor="let paddler of paddlers" 
+        [class.selected]="paddler === selectedPaddler" 
+        (click)="onSelect(paddler)">
+        <span class="badge">{{paddler.id}}</span> {{paddler.name}}
+      </li>
+    </ul>
+  </div>
+  
+  <div class="details">
+    <app-paddler-detail [paddler]="selectedPaddler" class="details"></app-paddler-detail>
+  </div>
+</div>
