@@ -8,6 +8,8 @@ import { PaddlerDetailComponent } from './paddler-detail/paddler-detail.componen
 import { PaddlerService } from './paddler.service';
 import { PaddlersComponent } from './paddlers/paddlers.component';
 import { BoatsComponent } from './boats/boats.component';
+import { MessagesComponent } from './messages/messages.component';
+import { MessageService } from './message.service';
 
 
 @NgModule({
@@ -16,12 +18,13 @@ import { BoatsComponent } from './boats/boats.component';
     PaddlersComponent,
     PaddlerDetailComponent,
     BoatsComponent,
+    MessagesComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule
   ],
-  providers: [ PaddlerService ],
+  providers: [ PaddlerService, MessageService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

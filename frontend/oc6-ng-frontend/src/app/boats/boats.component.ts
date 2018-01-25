@@ -15,4 +15,8 @@ export class BoatsComponent implements OnInit {
   ngOnInit() {
   }
 
+  onClick(): void {
+    
+  }
+
 }
