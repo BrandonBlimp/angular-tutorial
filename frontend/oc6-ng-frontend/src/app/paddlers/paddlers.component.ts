@@ -33,7 +33,6 @@ export class PaddlersComponent implements OnInit {
     else {
       this.selectedPaddlers.push(paddler);
     }
-    console.log(this.selectedPaddlers);
   }
 
   getPaddlers(): void {
