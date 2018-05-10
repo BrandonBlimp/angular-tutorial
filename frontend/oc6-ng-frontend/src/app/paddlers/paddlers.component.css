@@ -50,3 +50,10 @@
     float:left;
     margin-right:3em
   }
+  .details {
+    float: left;
+  }
+  .boats {
+    clear: left;
+  }
+

@@ -1,1 +1,10 @@
 /* Application-wide Styles */
+
+.paddlers {
+    display: inline-block;
+    width: auto;
+}
+.messages {
+    display: inline-block;
+    width: auto;
+}
