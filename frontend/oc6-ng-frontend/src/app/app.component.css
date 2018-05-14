@@ -1,8 +1,8 @@
 /* Application-wide Styles */
-
 .paddlers {
-    display: inline-block;
-    width: auto;
+    margin: 0 auto;
+    display: block;
+    width: 39em;
 }
 .messages {
     display: inline-block;
