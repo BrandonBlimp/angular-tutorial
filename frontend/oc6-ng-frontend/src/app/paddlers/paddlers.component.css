@@ -48,12 +48,20 @@
   }
   .paddlerList {
     float:left;
-    margin-right:3em
+    margin-right:3em;
+    border: 0.2em solid;
+    border-radius: 0.75em;
   }
   .details {
     float: left;
+    border: 0.2em solid;
+    border-radius: 0.75em;
+    padding: 0.5em;
   }
   .boats {
     clear: left;
+  }
+  #title {
+    text-align: center;
   }
 

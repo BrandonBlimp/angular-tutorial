@@ -1,7 +1,7 @@
 
 <div class="container">
   <div class="paddlerList">
-    <h2>All Paddlers</h2>
+    <h2 id="title">All Paddlers</h2>
     <ul class="paddler">
       <li *ngFor="let paddler of paddlers" 
         [class.selected]="paddler === selectedPaddler" 
@@ -12,11 +12,6 @@
     </ul>
   </div>
   
-  <div class="details">
-    <app-paddler-detail [paddler]="selectedPaddler" class="details"></app-paddler-detail>
-  </div>
-
-  <div class="boats">
-    <app-boats [paddlers]="selectedPaddlers" class="boats"></app-boats>
-  </div>
+  <app-paddler-detail [paddler]="selectedPaddler" class="details"></app-paddler-detail>
+  <app-boats [paddlers]="selectedPaddlers" class="boats"></app-boats>
 </div>
