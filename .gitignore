@@ -1,5 +1,6 @@
 node_modules/
 oc6-env/
+oc6-venv/
 
 .vscode/
 backend/django-docs-1.11-en/
