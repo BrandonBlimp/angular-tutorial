@@ -64,4 +64,11 @@
   #title {
     text-align: center;
   }
+  #selectedRoster {
+    float: left;
+    border: 0.2em solid;
+    border-radius: 0.75em;
+    padding: 0.5em;
+    margin-top: 1em;
+  }
 
