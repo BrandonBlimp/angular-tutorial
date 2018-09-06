@@ -1,9 +1,8 @@
 /* MessagesComponent's private CSS styles */
 
-h2 {
-  color: red;
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: lighter;
+h1 {
+  font-size: 175%;
+  margin: 0em;
 }
 
 body {
@@ -42,8 +41,10 @@ button.clear {
 
 #messagesDivInner {
   position: relative;
-  margin: auto;
+  margin: auto 17em auto 17em;
+  padding: 1em;
   top: 35%;
+  background-color: #ffffff;
 }
 
 #messagesDivOuter {
@@ -58,3 +59,7 @@ button.clear {
   left: 0px;
 }
 
+#resultList {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}

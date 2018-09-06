@@ -38,7 +38,7 @@ export class BoatsComponent implements OnInit {
 
     for (var j=0; j<boats.length; j++) {
       var boat = boats[j];
-      this.messageService.add("boat " + j + ": " + boat);
+      this.messageService.add("boat " + (j+1) + ": " + boat);
     }
   }
 
