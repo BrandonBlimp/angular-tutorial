@@ -1,4 +1,4 @@
-<div *ngIf="messageService.messages.length" id="messagesDivOuter">
+<div *ngIf="messageService.messages.length" (click)="messageService.clear()" id="messagesDivOuter">
         <div id="messagesDivInner">
                 <h1>Boats</h1>
                 <div *ngFor='let message of messageService.messages' id="resultList"> {{message}} </div>

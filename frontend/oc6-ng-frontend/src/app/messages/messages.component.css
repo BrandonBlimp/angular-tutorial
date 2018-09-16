@@ -36,11 +36,11 @@ button:disabled {
 
 button.clear {
   color: #888;
-  margin-bottom: 12px;
 }
 
 #messagesDivInner {
   position: relative;
+  z-index: 11;
   margin: auto 17em auto 17em;
   padding: 1em;
   top: 35%;
