@@ -61,7 +61,6 @@ app.get("/api/paddlers", function(req, res) {
 
 app.post("/api/paddlers", function(req, res) {
   var newPaddler = req.body;
-  newPaddler.createDate = new Date();
 
   if (!req.body.name) {
     handleError(res, "POST /api/paddlers has invalid user input", "Must provide a name.", 400);
