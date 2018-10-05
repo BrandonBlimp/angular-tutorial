@@ -67,10 +67,10 @@ app.post("/api/paddlers", function(req, res) {
     handleError(res, "POST /api/paddlers has invalid user input", "Must provide a name.", 400);
   } else if (!req.body.paddlingSide) {
     handleError(res, "POST /api/paddlers has invalid user input", "Must provide a paddling side.", 400);
-  } else if (!req.body.time) {
+  } else if (!req.body.time_s) {
     handleError(res, "POST /api/paddlers has invalid user input", "Must provide a paddler time.", 400);
   } else {
-    db.collection(CONTACTS_COLLECTION).insertOne(newContact, function(err, doc) {
+    db.collection(PADDLERS_COLLECTION).insertOne(newPaddler, function(err, doc) {
       if (err) {
         handleError(ers, err.message, "Failed to create new contact.");
       } else {
