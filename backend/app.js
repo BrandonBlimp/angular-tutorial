@@ -48,31 +48,34 @@ function handleError(res, reason, message, code) {
  */
 
 app.get("/api/paddlers", function(req, res) {
+  console.log("GET /api/paddlers");
   db.collection(PADDLERS_COLLECTION).find({}).toArray(function(err, docs) {
     if (err) {
       handleError(res, err.message, "Failed to fetch paddlers.");
     } else {
       res.status(200).json(docs);
+      console.log("GET /api/paddlers OK")
     }
   })
 });
 
-app.post("api/paddlers", function(req, res) {
+app.post("/api/paddlers", function(req, res) {
   var newPaddler = req.body;
   newPaddler.createDate = new Date();
 
   if (!req.body.name) {
-    handleError(res, "Invalid user input", "Must provide a name.", 400);
+    handleError(res, "POST /api/paddlers has invalid user input", "Must provide a name.", 400);
   } else if (!req.body.paddlingSide) {
-    handleError(res, "Invalid user input", "Must provide a paddling side.", 400);
+    handleError(res, "POST /api/paddlers has invalid user input", "Must provide a paddling side.", 400);
   } else if (!req.body.time) {
-    handleError(res, "Invalid user input", "Must provide a paddler time.", 400);
+    handleError(res, "POST /api/paddlers has invalid user input", "Must provide a paddler time.", 400);
   } else {
     db.collection(CONTACTS_COLLECTION).insertOne(newContact, function(err, doc) {
       if (err) {
         handleError(ers, err.message, "Failed to create new contact.");
       } else {
         res.status(201).json(doc.ops[0]);
+        console.log("POST /api/paddlers OK")
       }
     })
   }
