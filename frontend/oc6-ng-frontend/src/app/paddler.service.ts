@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { environment } from '../environments/environment';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { Paddler } from './paddler';
@@ -11,7 +12,7 @@ export class PaddlerService {
 
   constructor( private messageService: MessageService, private http: HttpClient) { }
 
-  private paddlersUrl = 'api/paddlers';
+  private paddlersUrl = environment.serverURL.concat(environment.paddlerEndpoint);
 
   // private log(message: string) {
   //   this.messageService.add('PaddlerService: ${message}');
