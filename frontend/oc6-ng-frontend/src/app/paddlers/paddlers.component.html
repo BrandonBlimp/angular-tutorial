@@ -3,11 +3,11 @@
   <div class="paddlerList">
     <h2 id="title">All Paddlers</h2>
     <ul class="paddler">
-      <li *ngFor="let paddler of paddlers" 
+      <li *ngFor="let paddler of paddlers, let i = index" 
         [class.selected]="paddler === selectedPaddler" 
         (mouseenter)="onMouseEnter(paddler)"
         (click)="onSelect(paddler)">
-        <span class="badge">{{paddler.id}}</span> {{paddler.name}}
+        <span class="badge">{{i+1}}</span> {{paddler.name}}
       </li>
     </ul>
   </div>
