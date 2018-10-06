@@ -1,4 +1,5 @@
 var express = require("express");
+var cors = require("cors");
 var bodyParser = require("body-parser");
 var mongodb = require("mongodb");
 var ObjectID = mongodb.ObjectID;
@@ -6,12 +7,13 @@ var ObjectID = mongodb.ObjectID;
 var uri = "mongodb+srv://guest1:123@cluster0-pos8v.mongodb.net/test?retryWrites=true";
 var DB_NAME = "db_1";
 var PADDLERS_COLLECTION = "paddlers";
-
-var app = express();
-app.use(bodyParser.json());
-
 // Create a database variable outside of the database connection callback to reuse the connection pool in your app.
 var db;
+
+var app = express();
+
+app.use(bodyParser.json());
+// app.use(cors);
 
 mongodb.MongoClient.connect(process.env.MONGODB_URI || uri, function(err, client) {
   if (err) {
@@ -47,8 +49,7 @@ function handleError(res, reason, message, code) {
     POST: creates a new paddler
  */
 
-app.get("/api/paddlers", function(req, res) {
-  console.log("GET /api/paddlers");
+app.get("/api/paddlers", cors(), function(req, res) {
   db.collection(PADDLERS_COLLECTION).find({}).toArray(function(err, docs) {
     if (err) {
       handleError(res, err.message, "Failed to fetch paddlers.");
@@ -59,7 +60,7 @@ app.get("/api/paddlers", function(req, res) {
   })
 });
 
-app.post("/api/paddlers", function(req, res) {
+app.post("/api/paddlers", cors(), function(req, res) {
   var newPaddler = req.body;
 
   if (!req.body.name) {
