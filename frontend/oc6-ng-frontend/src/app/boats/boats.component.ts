@@ -61,17 +61,11 @@ export class BoatsComponent implements OnInit {
 class Boat {
   _roster:Paddler[] = [];
 
-  constructor(roster:Paddler[]) {
-    this._roster = roster;
-  }
+  constructor(roster:Paddler[]) { this._roster = roster; }
 
-  get roster():Paddler[] {
-    return this._roster;
-  }
+  get roster():Paddler[] { return this._roster; }
 
-  set roster(input:Paddler[]) {
-    this._roster = input;
-  }
+  set roster(input:Paddler[]) { this._roster = input; }
 
   toString(): String {
     let rosterNames = [];
@@ -87,7 +81,5 @@ class Boat {
     return sum;
   }
 
-  addPaddler(paddler: Paddler): void {
-    this.roster.push(paddler);
-  }
+  addPaddler(paddler: Paddler): void { this.roster.push(paddler); }
 }
