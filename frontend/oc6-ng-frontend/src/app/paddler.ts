@@ -2,5 +2,5 @@ export class Paddler {
     id: number;
     name: string;
     paddlingSide: string;
-    time: number;
+    time_s: number;
 }

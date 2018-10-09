@@ -17,49 +17,65 @@ export class BoatsComponent implements OnInit {
   }
 
   onClick(): void {
-    var roster = this.paddlers;
-    var rosterSize = this.paddlers.length;
-    var sortedRoster = roster.sort((a,b) => a.time - b.time);
-    // OC6 seats six per boat
-    var numBoats = Math.ceil(rosterSize / 6);
-    console.log(sortedRoster);
-    console.log(numBoats);
-
-    // create empty 2d array (array of boats, each boat is represented by an array)
-    var boats = new Array(numBoats);
-    for (i=0;i<boats.length;i++) {boats[i]=[];} 
-
-    // greedy implementation
-    for (var i=0; i < rosterSize; i++) {
-      boats[i%numBoats].push(sortedRoster[i].name);
-    }
-
-    console.log(boats);
-
-    for (var j=0; j<boats.length; j++) {
-      var boat = boats[j];
-      this.messageService.add("boat " + (j+1) + ": " + boat);
-    }
+    this.determineRoster();
   }
 
   determineRoster(): void {
+    var boats: Boat[];
     var roster = this.paddlers;
     var rosterSize = this.paddlers.length;
-    var sortedRoster = roster.sort((a,b) => a.time - b.time);
+    var sortedRoster = roster.sort((a,b) => a.time_s - b.time_s);
     // OC6 seats six per boat
     var numBoats = Math.ceil(rosterSize / 6);
-    console.log(sortedRoster);
-    console.log(numBoats);
+    console.log("Sorted roster = ", sortedRoster);
+    console.log("Goal: generate ", numBoats, "boats");
 
     // create empty 2d array (array of boats, each boat is represented by an array)
-    var boats = new Array(numBoats);
-    for (i=0;i<boats.length;i++) {boats[i]=[];} 
+    boats = new Array(numBoats);
+    for (i=0;i<boats.length;i++) {boats[i]=new Boat([]);} 
 
     // greedy implementation
     for (var i=0; i < rosterSize; i++) {
-      boats[i%numBoats].push(sortedRoster[i].name);
+      boats[i%numBoats].addPaddler(sortedRoster[i]);
     }
-    console.log(boats);
+
+    for (var j=0; j<boats.length; j++) {
+      let boat = boats[j];
+      this.messageService.add("boat " + (j+1) + ": " + boat.toString());
+    }
+  }
+}
+
+class Boat {
+  _roster:Paddler[] = [];
+
+  constructor(roster:Paddler[]) {
+    this._roster = roster;
+    }
+
+  get roster():Paddler[] {
+    return this._roster;
   }
 
+  set roster(input:Paddler[]) {
+    this._roster = input;
+  }
+
+  toString(): String {
+    let rosterNames = [];
+    this.roster.map(function(x) {rosterNames.push(x.name)})
+    return rosterNames.toString();
+  }
+
+  getTimeSumInSeconds(): number {
+    let sum = 0;
+    if (this.roster.length > 0) {
+      this.roster.map(function(x) {sum += x.time_s});
+    }
+    return sum;
+  }
+
+  addPaddler(paddler: Paddler): void {
+    this.roster.push(paddler);
+  }
 }
