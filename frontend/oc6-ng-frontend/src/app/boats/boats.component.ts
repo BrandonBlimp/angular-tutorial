@@ -24,7 +24,7 @@ export class BoatsComponent implements OnInit {
     var boats: Boat[];
     var roster = this.paddlers;
     var rosterSize = this.paddlers.length;
-    var sortedRoster = roster.sort((a,b) => a.time_s - b.time_s);
+    var sortedRoster = roster.sort((a,b) => b.time_s - a.time_s); // sorts from slowest to fastest
     // OC6 seats six per boat
     var numBoats = Math.ceil(rosterSize / 6);
     console.log("Sorted roster = ", sortedRoster);
@@ -32,13 +32,25 @@ export class BoatsComponent implements OnInit {
 
     // create empty 2d array (array of boats, each boat is represented by an array)
     boats = new Array(numBoats);
-    for (i=0;i<boats.length;i++) {boats[i]=new Boat([]);} 
+    for (let i=0; i<boats.length; i++) {boats[i] = new Boat([]);} 
 
-    // greedy implementation
-    for (var i=0; i < rosterSize; i++) {
-      boats[i%numBoats].addPaddler(sortedRoster[i]);
+    // greedy implementation: simply iterates paddlers and inserts into boats
+    // for (var i=0; i < rosterSize; i++) {
+    //   boats[i%numBoats].addPaddler(sortedRoster[i]);
+    // }
+
+    // slightly less greedy implementation: iterates through paddlers and inserts into current fastest boat
+    for (let i=0; i < rosterSize; i++) {
+      let fastestBoat = boats.reduce((acc, currentValue) => {
+        return (currentValue.getTimeSumInSeconds() < acc.getTimeSumInSeconds()) ? currentValue : acc;
+      }, boats[0]);
+      fastestBoat.addPaddler(sortedRoster[i]);
     }
 
+    // logs each boat's time to console
+    boats.map(function(x) {console.log("Boat time: ", x.getTimeSumInSeconds())});
+
+    // display resulting boats to user
     for (var j=0; j<boats.length; j++) {
       let boat = boats[j];
       this.messageService.add("boat " + (j+1) + ": " + boat.toString());
@@ -51,7 +63,7 @@ class Boat {
 
   constructor(roster:Paddler[]) {
     this._roster = roster;
-    }
+  }
 
   get roster():Paddler[] {
     return this._roster;
