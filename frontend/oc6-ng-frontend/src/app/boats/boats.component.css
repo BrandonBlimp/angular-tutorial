@@ -3,7 +3,7 @@ h2 {
     margin: auto;
     margin-bottom: 0.3em;
 }
-#confirmButtonDiv {
+.confirmButtonDiv {
     text-align:center;
     margin-top: 0.5em;
 }

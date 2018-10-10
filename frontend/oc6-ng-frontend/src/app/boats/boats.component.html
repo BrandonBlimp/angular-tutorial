@@ -2,6 +2,9 @@
 <li *ngFor="let paddler of paddlers">
   <span class="badge">{{paddler.id}}</span> {{paddler.name}}
 </li>
-<div id="confirmButtonDiv">
-    <button (click)="onClick()">Make my roster</button>
+<div class="confirmButtonDiv">
+  <button (click)="clearSelections()">Clear roster</button>
+</div>
+<div class="confirmButtonDiv">
+  <button (click)="determineRoster()">Make my roster</button>
 </div>

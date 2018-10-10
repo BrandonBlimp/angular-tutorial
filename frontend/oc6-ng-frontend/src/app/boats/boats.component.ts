@@ -16,9 +16,7 @@ export class BoatsComponent implements OnInit {
   ngOnInit() {
   }
 
-  onClick(): void {
-    this.determineRoster();
-  }
+  clearSelections(): void { this.paddlers.length = 0; }
 
   determineRoster(): void {
     var boats: Boat[];
