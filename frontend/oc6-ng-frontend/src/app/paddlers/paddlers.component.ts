@@ -35,6 +35,10 @@ export class PaddlersComponent implements OnInit {
     }
   }
 
+  onSelectAll(): void {
+    this.selectedPaddlers = this.paddlers.slice(0);
+  }
+
   getPaddlers(): void {
     this.paddlerService.getPaddlers().subscribe(paddlers => this.paddlers = paddlers);
   }
