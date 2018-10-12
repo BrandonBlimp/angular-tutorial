@@ -88,13 +88,23 @@ app.post("/api/paddlers", cors(), function(req, res) {
     DELETE: deletes paddler by id
  */
 
-app.get("api/paddlers/:id", function (req, res) {
+app.get("/api/paddlers/:id", function (req, res) {
+  db.collection(PADDLERS_COLLECTION)
+  .find({_id: new mongodb.ObjectId(req.params.id)})
+  .toArray(function(err, docs) {
+    if (err) {
+      handleError(res, err.message, "Failed to fetch paddler.");
+    } else {
+      res.status(200).json(docs);
+      console.log("GET /api/paddlers/%s OK", req.params.id);
+    }
+  })
 });
 
-app.put("api/paddlers/:id", function (req, res) {
+app.put("/api/paddlers/:id", function (req, res) {
 });
 
-app.post("api/paddlers/:id", function (req, res) {
+app.post("/api/paddlers/:id", function (req, res) {
 });
 
 
