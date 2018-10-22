@@ -12,6 +12,7 @@ var db;
 
 var app = express();
 
+// CORS options
 var whitelist = ["http://localhost:4200", "localhost:4200"];
 var corsOptionsDelegate = function (req, callback) {
   var corsOptions;
