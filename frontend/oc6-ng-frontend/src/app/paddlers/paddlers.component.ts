@@ -43,4 +43,9 @@ export class PaddlersComponent implements OnInit {
     this.paddlerService.getPaddlers().subscribe(paddlers => this.paddlers = paddlers);
   }
 
+  createPaddler(): void {
+    this.paddlerService.postPaddler(new Paddler("TEST", "right", 24601))
+      .subscribe(paddler => this.paddlers.push(paddler));
+  }
+
 }

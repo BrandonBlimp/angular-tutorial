@@ -71,8 +71,8 @@
     padding: 0.5em;
     margin-top: 1em;
   }
-  #selectAllDiv {
+  .buttonDiv {
     text-align: center;
-    margin-bottom: 1.25em;
+    margin-bottom: 1em;
   }
 

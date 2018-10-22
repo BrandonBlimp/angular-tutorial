@@ -23,4 +23,8 @@ export class PaddlerService {
     return this.http.get<Paddler[]>(this.paddlersUrl)
   }
 
+  postPaddler(paddler: Paddler): Observable<Paddler> {
+    return this.http.post<Paddler>(this.paddlersUrl, paddler)
+  }
+
 }

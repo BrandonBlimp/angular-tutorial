@@ -12,6 +12,20 @@ var db;
 
 var app = express();
 
+var whitelist = ["http://localhost:4200", "localhost:4200"];
+var corsOptionsDelegate = function (req, callback) {
+  var corsOptions;
+  var header = req.header('Origin');
+  var index = whitelist.indexOf(req.header('Origin'));
+  if (whitelist.indexOf(req.header('Origin')) !== -1) {
+    corsOptions = { origin: true } // reflect (enable) the requested origin in the CORS response
+  } else {
+    corsOptions = { origin: false } // disable CORS for this request
+  }
+  callback(null, corsOptions) // callback expects two parameters: error and options
+}
+
+app.use(cors(corsOptionsDelegate));
 app.use(bodyParser.json());
 // app.use(cors);
 
@@ -49,7 +63,7 @@ function handleError(res, reason, message, code) {
     POST: creates a new paddler
  */
 
-app.get("/api/paddlers", cors(), function(req, res) {
+app.get("/api/paddlers", cors(corsOptionsDelegate), function(req, res) {
   db.collection(PADDLERS_COLLECTION).find({}).toArray(function(err, docs) {
     if (err) {
       handleError(res, err.message, "Failed to fetch paddlers.");
@@ -60,7 +74,7 @@ app.get("/api/paddlers", cors(), function(req, res) {
   })
 });
 
-app.post("/api/paddlers", cors(), function(req, res) {
+app.post("/api/paddlers", cors(corsOptionsDelegate), function(req, res) {
   var newPaddler = req.body;
 
   if (!req.body.name) {
@@ -102,6 +116,15 @@ app.get("/api/paddlers/:id", function (req, res) {
 });
 
 app.put("/api/paddlers/:id", function (req, res) {
+  var updatePaddler = req.body;
+
+  if (!req.body.name) {
+    handleError(res, "PUT /api/paddlers has invalid user input", "Must provide a name.", 400);
+  } else if (!req.body.paddlingSide) {
+    handleError(res, "PUT /api/paddlers has invalid user input", "Must provide a paddling side.", 400);
+  } else if (!req.body.time_s) {
+    handleError(res, "PUT /api/paddlers has invalid user input", "Must provide a paddler time.", 400);
+  }
 });
 
 app.post("/api/paddlers/:id", function (req, res) {
