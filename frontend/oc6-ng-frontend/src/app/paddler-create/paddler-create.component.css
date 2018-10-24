@@ -1,0 +1,39 @@
+#divInner {
+    position: relative;
+    z-index: 11;
+    margin: auto 20em auto 20em;
+    padding: 1em;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #ffffff;
+    border-radius: 7px;
+  }
+  
+#divOuter {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    text-align: center;
+    background-color: rgba(58, 58, 58, 0.65);
+    z-index: 10;
+    top: 0px;
+    left: 0px;
+}
+.form-group {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 1em;
+}
+.form-input {
+    width: 100%;
+    /* border: 0.2em solid #18b4cf; */
+    border: 0.1em solid #999999;
+    border-radius: 0.2em;
+    box-sizing: border-box;
+    padding: 0.5em;
+}
+
+.submit {
+    margin-top: 1em;
+}

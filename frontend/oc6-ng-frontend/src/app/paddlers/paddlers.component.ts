@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Paddler } from '../paddler';
 import { PaddlerService } from '../paddler.service';
+import { MessageService } from '../message.service';
 
 @Component({
   selector: 'app-paddlers',
@@ -13,7 +14,7 @@ export class PaddlersComponent implements OnInit {
   selectedPaddler: Paddler;
   selectedPaddlers: Paddler[] = [];
 
-  constructor(private paddlerService: PaddlerService) { }
+  constructor(private paddlerService: PaddlerService, private messageService: MessageService) { }
   
   ngOnInit() {
     this.getPaddlers();
@@ -44,8 +45,9 @@ export class PaddlersComponent implements OnInit {
   }
 
   createPaddler(): void {
-    this.paddlerService.postPaddler(new Paddler("TEST", "right", 24601))
-      .subscribe(paddler => this.paddlers.push(paddler));
+    this.messageService.toggleCreatePopup();
+    // this.paddlerService.postPaddler(new Paddler("TEST", "right", 24601))
+    //   .subscribe(paddler => this.paddlers.push(paddler));
   }
 
 }

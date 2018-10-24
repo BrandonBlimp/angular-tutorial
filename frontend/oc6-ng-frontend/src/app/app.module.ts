@@ -11,6 +11,7 @@ import { BoatsComponent } from './boats/boats.component';
 import { MessagesComponent } from './messages/messages.component';
 import { MessageService } from './message.service';
 import { HttpClientModule } from '@angular/common/http';
+import { PaddlerCreateComponent } from './paddler-create/paddler-create.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
     PaddlerDetailComponent,
     BoatsComponent,
     MessagesComponent,
+    PaddlerCreateComponent,
   ],
   imports: [
     BrowserModule,
