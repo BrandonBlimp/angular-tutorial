@@ -17,7 +17,10 @@
                 <label>Time in seconds</label>
                 <input type="number" class="form-input" id="time_s" [(ngModel)]="paddler.time_s" name="time_s" required>
             </div>
-            <button class="submit" (click)="submit()">Submit</button>
+            <button type="submit" 
+                class="submit" 
+                [disabled]="!paddlerForm.form.valid"
+                (ngSubmit)="submit()">Submit</button>
         </form>
     </div>
 </div>
