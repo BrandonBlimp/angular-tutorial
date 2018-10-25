@@ -1,3 +1,10 @@
+h2 {
+    font-weight:300;
+}
+label {
+    font-weight: 400;
+}
+
 #divInner {
     position: relative;
     z-index: 11;
@@ -33,7 +40,15 @@
     box-sizing: border-box;
     padding: 0.5em;
 }
-
+.form-input:focus {
+    outline:none;
+}
+.ng-valid[required], ng-valid.required {
+    border: 0.14em solid #42A948;
+}
+.ng-invalid:not(form) {
+    border: 0.14em solid #a94442;
+}
 .submit {
     margin-top: 1em;
 }
